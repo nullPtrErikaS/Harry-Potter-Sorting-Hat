@@ -207,4 +207,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }, i * 300); // Stagger fireworks
         }
     }
+
+    document.querySelector('.view-percentages-btn').addEventListener('click', function() {
+        document.querySelector('.result').style.display = 'none';
+        document.querySelector('.percentages').style.display = 'block';
+
+        const percentagesList = document.querySelector('.percentages-list');
+        percentagesList.innerHTML = '';
+
+        const housePercentages = calculateHousePercentages(); // This function should return an object with house percentages
+
+        for (const house in housePercentages) {
+            const li = document.createElement('li');
+            li.textContent = `${house}: ${housePercentages[house]}%`;
+            percentagesList.appendChild(li);
+        }
+    });
+
+    document.querySelector('.back-to-result-btn').addEventListener('click', function() {
+        document.querySelector('.percentages').style.display = 'none';
+        document.querySelector('.result').style.display = 'block';
+    });
+
+    function calculateHousePercentages() {
+        // This is a placeholder function. Replace it with your actual logic to calculate house percentages.
+        return {
+            Gryffindor: 40,
+            Hufflepuff: 30,
+            Ravenclaw: 20,
+            Slytherin: 10
+        };
+    }
 });
